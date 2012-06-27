@@ -1,0 +1,23 @@
+<h1>Anagram finder</h1>
+
+<%= form_tag '/upload', :multipart => true do %>
+  <label for="file">File to Upload</label> <%= file_field_tag "file" %>
+  <%= submit_tag "upload" %>
+<% end %>
+<%= @time %>
+
+<%= form_tag '/find' do %>
+  <%= search_field_tag 'term' %>
+  <%= submit_tag 'search' %>
+<% end %>
+
+<% if @words && @words.empty? %>
+  "No anagrams found"
+<% end %>
+
+<% if @words %>
+  <% @words.each do |word| %>
+    <p><%= word %></p>
+  <% end %>
+<% end %>
+
